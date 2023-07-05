@@ -111,9 +111,7 @@ export class Diff2HtmlUI {
   }
 
   fileContentToggle(): void {
-    this.targetElement.querySelectorAll<HTMLElement>('.d2h-file-collapse').forEach(fileContentToggleBtn => {
-      fileContentToggleBtn.style.display = 'flex';
-
+    this.targetElement.querySelectorAll<HTMLElement>('.d2h-file-header').forEach(fileContentToggleBtn => {
       const toggleFileContents: (selector: string) => void = selector => {
         const fileContents: HTMLElement | null | undefined = fileContentToggleBtn
           .closest('.d2h-file-wrapper')
@@ -126,7 +124,8 @@ export class Diff2HtmlUI {
       };
 
       const toggleHandler: (e: Event) => void = e => {
-        if (fileContentToggleBtn === e.target) return;
+        e.stopPropagation();
+        e.preventDefault();
 
         toggleFileContents('.d2h-file-diff');
         toggleFileContents('.d2h-files-diff');
