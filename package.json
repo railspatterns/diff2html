@@ -63,7 +63,8 @@
     "start:website": "webpack-dev-server --mode development --config webpack.website.ts",
     "preversion": "yarn run validate",
     "version": "git add -A package.json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepack": "yarn run build"
   },
   "main": "./lib/diff2html.js",
   "module": "./lib-esm/diff2html.js",
